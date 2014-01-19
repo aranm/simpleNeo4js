@@ -1,0 +1,31 @@
+{
+    "author": "Aran Mulholland",
+    "name": "simpleNeo4js",
+    "description": "A (very) simple node.js connection client for Neo4j",
+    "version": "0.0.1",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/aranm/simpleNeo4js.git"
+    },
+    "dependencies": {
+        "superagent": "0.15.5"
+    },
+    "devDependencies": {},
+    "optionalDependencies": {},
+    "engines": {
+        "node": "*"
+    },
+    "licenses": [
+        {
+            "type": "MIT"
+        }
+    ],
+    "keywords": [
+        "neo4j",
+        "graph",
+        "database",
+        "simple",
+        "client",
+        "cypher"
+    ]
+}
