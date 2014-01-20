@@ -2,7 +2,7 @@
     "author": "Aran Mulholland",
     "name": "simpleneo4js",
     "description": "A (very) simple node.js connection client for Neo4j",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "repository": {
         "type": "git",
         "url": "https://github.com/aranm/simpleneo4js.git"
@@ -27,6 +27,7 @@
         "client",
         "cypher"
     ],
+    "main": "lib/simpleneo4js",
     "bugs": {
         "url": "https://github.com/aranm/simpleNeo4js/issues"
     },
