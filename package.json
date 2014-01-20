@@ -5,7 +5,7 @@
     "version": "0.0.1",
     "repository": {
         "type": "git",
-        "url": "https://github.com/aranm/simpleNeo4js"
+        "url": "https://github.com/aranm/simpleneo4js.git"
     },
     "dependencies": {
         "superagent": "0.15.5"
