@@ -5,6 +5,8 @@ A (very) simple node.js connection client for Neo4j
 
 
 *Usage
+
+
             var cypherQuery = 'CREATE (n:User {name: {name}, age: {age} }) RETURN n';
             var queryParameters = {
                 name: 'Billy Bob',
