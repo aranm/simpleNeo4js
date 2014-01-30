@@ -30,3 +30,7 @@ A (very) simple node.js connection client for Neo4j
                 done(error);
             });
 ```
+
+###Implementation
+
+The client is a very thin wrapper and hits the Neo4j REST transactional endpoint, at present it does not do more than one query per transaction (it uses '/db/data/transaction/commit').
