@@ -4,9 +4,9 @@ simpleNeo4js
 A (very) simple node.js connection client for Neo4j
 
 
-*Usage
+###Usage
 
-
+```
             var cypherQuery = 'CREATE (n:User {name: {name}, age: {age} }) RETURN n';
             var queryParameters = {
                 name: 'Billy Bob',
@@ -29,3 +29,4 @@ A (very) simple node.js connection client for Neo4j
             queryResult.on('error', function (error) {
                 done(error);
             });
+```
