@@ -6,6 +6,7 @@ A (very) simple node.js connection client for Neo4j
 
 ###Usage
 
+The client can be used via the transactional endpoint, at present it does not do more than one query per transaction (it uses '/db/data/transaction/commit')
 ```
             var cypherQuery = 'CREATE (n:User {name: {name}, age: {age} }) RETURN n';
             var queryParameters = {
@@ -32,6 +33,46 @@ A (very) simple node.js connection client for Neo4j
             queryResult.on('error', function (error) {
                 done(error);
             });
+```
+
+The client can also be used with the batched endpoint, this allows for multiple cypher queries to be executed in one transaction. (this uses '/db/data/batch')
+
+```
+            var queries = [{
+                cypher: 'MATCH (n:User) RETURN n',
+                parameters: { }
+            },
+            {
+                cypher: 'MATCH (n:User) RETURN n.age',
+                parameters: { }
+            }];
+
+            var queryResult = simpleNeo4js.batchedQuery({
+                queries: queries
+            });
+
+            queryResult.on('data', function (newNodes) {
+                assert.equal(newNodes.length, 2, 'Two query results were returned as two were requested');
+                assert.equal(newNodes[0].length, 2, 'Two nodes were returned');
+                assert.equal(newNodes[1].length, 2, 'Two results were returned');
+
+                var names = newNodes[0].map(function (item) {
+                    return item.n.name;
+                });
+
+                assert.ok(names.indexOf('Johno Riso') > -1, "Names returned contains John Riso");
+                assert.ok(names.indexOf('Billy Bob') > -1, "Names returned contains Billy Bob");
+
+                var ages = newNodes[1].map(function (item) {
+                    return item['n.age'];
+                });
+
+                assert.equal(ages[0], 34, 'First node age = 34');
+                assert.equal(ages[1], 18, 'Second result age = 18');
+
+                done();
+            });
+
 ```
 
 ###Implementation
